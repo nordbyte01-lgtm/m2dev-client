@@ -1373,14 +1373,22 @@ class DragonSoulRefineWindow(ui.ScriptWindow):
 		self.Refresh()
 	
 	def __OverInRefineItem(self, slotIndex):
+		if not self.tooltipItem:
+			return
 		if slotIndex in self.refineItemInfo:
 			inven_type, inven_pos, item_count = self.refineItemInfo[slotIndex]
 			self.tooltipItem.SetInventoryItem(inven_pos, inven_type)
+		else:
+			self.tooltipItem.HideToolTip()
 
 	def __OverInResultItem(self, slotIndex):
+		if not self.tooltipItem:
+			return
 		if slotIndex in self.resultItemInfo:
 			inven_type, inven_pos, item_count = self.resultItemInfo[slotIndex]
 			self.tooltipItem.SetInventoryItem(inven_pos, inven_type)
+		else:
+			self.tooltipItem.HideToolTip()
 		
 	def __OverOutItem(self):
 		if self.tooltipItem:
